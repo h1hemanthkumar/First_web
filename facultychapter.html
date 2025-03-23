@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Chapter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('backofteacherformatk.png'); /* Replace 'background-image.jpg' with the path to your image */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .faculty-names {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    .faculty-names h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .faculty-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .faculty-list li {
+      margin-bottom: 10px;
+    }
+
+    .faculty-list li a {
+      display: block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .faculty-list li a:hover {
+      background-color: #2980b9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px 0 20px 220px; /* Adjust the left margin to create space for the faculty names list */
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7); /* Add transparency to the background color */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      position: relative;
+      z-index: 0;
+    }
+
+    .faculty-details {
+      padding-left: 20px;
+    }
+
+    .faculty-section {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .faculty-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .faculty-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .faculty-role {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .faculty-message {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .faculty-plans {
+      font-style: italic;
+      color: #888;
+    }
+
+    .faculty-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="faculty-names">
+    <h2>Faculty Members</h2>
+    <ul class="faculty-list">
+      <li><a href="#sri-ram">Sri Ram</a></li>
+      <li><a href="#vishnu">Vishnu</a></li>
+      <li><a href="#krishna">Krishna</a></li>
+      <li><a href="#ragavendra">Ragavendra</a></li>
+      <li><a href="#brahma">Brahma</a></li>
+      <li><a href="#karna">Karna</a></li>
+      <li><a href="#shiva">Shiva</a></li>
+      <li><a href="#shankar">Shankar</a></li>
+    </ul>
+  </div>
+
+  <div class="faculty-details">
+    <div class="faculty-section" id="sri-ram">
+      <img src="https://img.freepik.com/premium-vector/businessman-character-avatar-isolated_24877-5037.jpg?w=360" alt="Sri Ram" class="faculty-image">
+      <h3 class="faculty-name">Sri Ram</h3>
+      <div class="faculty-role">Professor</div>
+      <div class="faculty-message">
+        <p>Hello students, welcome to our faculty chapter. I'm here to guide you through your academic journey and help you achieve your goals.</p>
+      </div>
+      <div class="faculty-plans">
+        <p>Looking forward to exploring exciting research projects with you all.</p>
+      </div>
+    </div>
+
+    <div class="faculty-section" id="vishnu">
+      <img src="https://cdn2.vectorstock.com/i/1000x1000/52/36/teacher-male-avatar-character-vector-18585236.jpg" alt="Vishnu" class="faculty-image">
+      <h3 class="faculty-name">Vishnu</h3>
+      <div class="faculty-role">Associate Professor</div>
+      <div class="faculty-message">
+        <p>Welcome, students! I'm excited to be part of your academic journey and look forward to sharing my knowledge and experiences with you.</p>
+      </div>
+      <div class="faculty-plans">
+        <p>Let's work together to achieve great things!</p>
+      </div>
+    </div>
+    
+    <!-- Add more sections for additional teachers -->
+    
+    <div class="faculty-section" id="krishna">
+      <img src="https://img.freepik.com/premium-vector/businessman-avatar-cartoon-character-profile_18591-50585.jpg" alt="Krishna" class="faculty-image">
+      <h3 class="faculty-name">Krishna</h3>
+      <div class="faculty-role">Assistant Professor</div>
+      <div class="faculty-message">
+        <p>Greetings, students! I'm here to support you in your academic pursuits and help you reach your full potential.</p>
+      </div>
+      <div class="faculty-plans">
+        <p>Let's embark on this journey together!</p>
+      </div>
+    </div>
+
+    <div class="faculty-section" id="ragavendra">
+      <img src="https://img.freepik.com/premium-vector/businessman-avatar-cartoon-character-profile_18591-50137.jpg" alt="Ragavendra" class="faculty-image">
+      <h3 class="faculty-name">Ragavendra</h3>
+      <div class="faculty-role">Lecturer</div>
+      <div class="faculty-message">
+        <p>Welcome to the Faculty Chapter! I'm here to assist you in your learning and academic endeavors.</p>
+      </div>
+      <div class="faculty-plans">
+        <p>Excited to engage with you all!</p>
+      </div>
+    </div>
+    
+    <div class="faculty-section" id="brahma">
+      <img src="https://media.istockphoto.com/id/1197666850/vector/portrait-of-a-happy-man-avatar-of-a-guy-for-social-network-colorful-portrait.jpg?s=612x612&w=0&k=20&c=OQhsDhTEX3v7He0eL0cx-9B97A87NFE4jFTd4wC1WKA=" alt="Brahma" class="faculty-image">
+      <h3 class="faculty-name">Brahma</h3>
+      <div class="faculty-role">Assistant Professor</div>
+      <div class="faculty-message">
+        <p>Hello everyone! I'm thrilled to be part of this faculty and eager to contribute to your education.</p>
+      </div>
+      <div class="faculty-plans">
+        <p>Let's make this academic journey memorable!</p>
+      </div>
+    </div>
+    
+    <div class="faculty-section" id="karna">
+      <img src="https://w7.pngwing.com/pngs/333/55/png-transparent-computer-icons-avatar-teacher-child-face-heroes-thumbnail.png" alt="Karna" class="faculty-image">
+      <h3 class="faculty-name">Karna</h3>
+      <div class="faculty-role">Associate Professor</div>
+      <div class="faculty-message">
+        <p>Greetings, students! I'm here to provide guidance and support as you pursue your academic goals.</p>
+      </div>
+      <div class="faculty-plans">
+        <p>Looking forward to our collaboration!</p>
+      </div>
+    </div>
+    
+    <div class="faculty-section" id="shiva">
+      <img src="https://w7.pngwing.com/pngs/3/495/png-transparent-avatar-of-a-teacher-male.png" alt="Shiva" class="faculty-image">
+      <h3 class="faculty-name">Shiva</h3>
+      <div class="faculty-role">Professor</div>
+      <div class="faculty-message">
+        <p>Welcome, students! Let's embark on a journey of knowledge and discovery together.</p>
+      </div>
+      <div class="faculty-plans">
+        <p>Excited to work with each one of you!</p>
+      </div>
+    </div>
+    
+    <div class="faculty-section" id="shankar">
+      <img src="https://cdn-icons-png.freepik.com/512/2784/2784488.png" alt="Shankar" class="faculty-image">
+      <h3 class="faculty-name">Shankar</h3>
+      <div class="faculty-role">Lecturer</div>
+      <div class="faculty-message">
+        <p>Hello everyone! I'm here to support your learning and help you achieve academic success.</p>
+      </div>
+      <div class="faculty-plans">
+        <p>Looking forward to a productive academic year!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

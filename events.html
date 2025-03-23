@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Calendar with Event Posting</title>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 0;
+            background: url('https://static.wixstatic.com/media/23f855_1f6ce3cd8f014f19adbb0577c35d4378f000.jpg/v1/fill/w_1920,h_1080,al_c,q_90,enc_auto/23f855_1f6ce3cd8f014f19adbb0577c35d4378f000.jpg') no-repeat center center fixed;
+            background-size: cover;
+            box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0);
+            position: relative;
+        }
+      
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.349); /* Add transparency */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333; /* Change heading color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+            margin-bottom: 20px; /* Add margin to bottom */
+        }
+
+        .calendar {
+            margin-bottom: 20px;
+        }
+
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar th,
+        .calendar td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .calendar th {
+            background-color: #f2f2f2;
+        }
+
+        .calendar-date:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .calendar-date.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Define different colors for each month */
+        .january { background-color: #ffcccc; } /* Light red */
+        .february { background-color: #ccffcc; } /* Light green */
+        .march { background-color: #ccccff; } /* Light blue */
+        .april { background-color: #ffcc99; } /* Light orange */
+        .may { background-color: #ffff99; } /* Light yellow */
+        .june { background-color: #ccffff; } /* Light cyan */
+        .july { background-color: #ff99cc; } /* Light pink */
+        .august { background-color: #99ff99; } /* Light lime */
+        .september { background-color: #ffccff; } /* Light purple */
+        .october { background-color: #ff9966; } /* Light coral */
+        .november { background-color: #99ccff; } /* Light sky blue */
+        .december { background-color: #ff6666; } /* Light salmon */
+
+        .event-form {
+            margin-bottom: 20px;
+        }
+
+        .event-form input[type="text"] {
+            width: calc(100% - 80px);
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .event-form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .event-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .event-list h3 {
+            margin-top: 0;
+        }
+
+        .event-list li {
+            margin-bottom: 5px;
+            padding: 8px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Monthly Calendar with Event Posting</h2>
+
+    <div class="calendar">
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+            <select id="year-select" class="dropdown-button" onchange="generateCalendar()">
+                <!-- Add year options dynamically if needed -->
+            </select>
+            <select id="month-select" class="dropdown-button" onchange="generateCalendar()">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+            </thead>
+            <tbody id="calendar-body">
+            <!-- Calendar cells will be generated dynamically here -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="event-form" style="display: none;">
+        <h3 style="margin-bottom: 10px;">Post Event</h3>
+        <form id="event-form" onsubmit="postEvent(); return false;">
+            <input type="text" id="event-text" placeholder="Enter event or reminder">
+            <input type="submit" value="Post">
+        </form>
+    </div>
+
+    <div>
+        <h3>Events:1--select month or year  2---Fast double click on date for post the event on that day</h3><br>
+        <h3>Events:</h3>
+        <ul class="event-list" id="event-list">
+            <!-- Events will be displayed here -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    // Function to generate calendar for the specified year and month
+    function generateCalendar() {
+        let yearSelect = document.getElementById("year-select");
+        let monthSelect = document.getElementById("month-select");
+        let selectedYear = parseInt(yearSelect.value);
+        let selectedMonth = parseInt(monthSelect.value);
+        let currentDate = new Date(selectedYear, selectedMonth - 1, 1);
+        let firstDayOfMonth = new Date(selectedYear, selectedMonth - 1, 1);
+        let lastDayOfMonth = new Date(selectedYear, selectedMonth, 0);
+        let calendarBody = document.getElementById("calendar-body");
+        calendarBody.innerHTML = ""; // Clear existing cells
+
+        let dateCounter = 1;
+        let dayCounter = firstDayOfMonth.getDay();
+
+        // Loop to generate cells for each day of the month
+        while (dateCounter <= lastDayOfMonth.getDate()) {
+            let row = document.createElement("tr");
+            for (let i = 0; i < 7; i++) {
+                let cell = document.createElement("td");
+                cell.classList.add("calendar-date");
+
+                switch (selectedMonth) {
+                    case 1: cell.classList.add("january"); break;
+                    case 2: cell.classList.add("february"); break;
+                    case 3: cell.classList.add("march"); break;
+                    case 4: cell.classList.add("april"); break;
+                    case 5: cell.classList.add("may"); break;
+                    case 6: cell.classList.add("june"); break;
+                    case 7: cell.classList.add("july"); break;
+                    case 8: cell.classList.add("august"); break;
+                    case 9: cell.classList.add("september"); break;
+                    case 10: cell.classList.add("october"); break;
+                    case 11: cell.classList.add("november"); break;
+                    case 12: cell.classList.add("december"); break;
+                }
+
+                if (dayCounter > 0 && dateCounter === 1) {
+                    cell.textContent = "";
+                    dayCounter--;
+                } else if (dateCounter <= lastDayOfMonth.getDate()) {
+                    cell.textContent = dateCounter;
+                    dateCounter++;
+                    // Add event listener for double click to post event
+                    cell.addEventListener("dblclick", function () {
+                        showEventForm(selectedYear, selectedMonth, parseInt(this.textContent));
+                    });
+                } else {
+                    cell.textContent = "";
+                }
+                row.appendChild(cell);
+            }
+            calendarBody.appendChild(row);
+        }
+    }
+
+    // Initialize the calendar with the current month and year
+    generateCalendar();
+
+    let selectedDate = null;
+
+    // Function to show the event form when double-clicking on a date
+    function showEventForm(year, month, day) {
+        selectedDate = new Date(year, month - 1, day);
+        document.querySelector(".event-form").style.display = "block";
+    }
+
+    // Function to post an event
+    function postEvent() {
+        let eventText = document.getElementById("event-text").value;
+        if (eventText.trim() === "") {
+            alert("Please enter an event or reminder.");
+            return;
+        }
+        if (!selectedDate) {
+            alert("Please select a date to post the event.");
+            return;
+        }
+        let eventList = document.getElementById("event-list");
+        let eventListItem = document.createElement("li");
+        eventListItem.textContent = selectedDate.toDateString() + ": " + eventText;
+        eventList.appendChild(eventListItem);
+        selectedDate = null; // Reset selected date
+        document.getElementById("event-text").value = ""; // Clear the input field
+        hideEventForm();
+    }
+
+    // Function to hide the event form
+    function hideEventForm() {
+        document.querySelector(".event-form").style.display = "none";
+    }
+
+    // Dynamically populate year select options from 2000 to 2100
+    let yearSelect = document.getElementById("year-select");
+    for (let i = 2000; i <= 2100; i++) {
+        let option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        yearSelect.appendChild(option);
+    }
+</script>
+</body>
+</html>

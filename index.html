@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 0;
+            background: url('https://t4.ftcdn.net/jpg/06/48/43/03/240_F_648430355_zyTnsEYFzONBcsTnfi9tJtx5vahgOpWS.jpg') no-repeat center center fixed;
+            background-size: cover;
+            box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0);
+            position: center;
+        }
+
+        .dimmed {
+            box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.623);
+        }
+
+        header {
+            position: relative;
+        }
+
+        .club-container {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0);
+            z-index: 2;
+        }
+
+        .club-name {
+            font-family: 'Pacifico', cursive;
+            font-size: 40px;
+            color: #f3eded;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #050505;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #ffffff;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+        .icon-button {
+            font-size: 40px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            justify-content: center;
+            background-color: rgb(0, 0, 0);
+            border-radius: 50%;
+        }
+
+        .icon-button span {
+            margin-left: 10px;
+            color: #ffffff9a;
+        }
+
+        .description {
+            position: center;
+            font-size: 24px;
+            color: #0f160efe;
+            background-color: rgba(255, 255, 255, 0.449);
+            padding: 10px;
+            margin: 10px auto;
+            max-width: 800px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .notification-bar {
+            position: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            display: none;
+            z-index: 3;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+</head>
+
+<body>
+
+    <header>
+        <div class="club-container">
+            <div class="club-name">Innovation Club</div>
+        </div>
+    </header>
+
+    <div class="logo-container">
+        <img src="https://th.bing.com/th/id/OIP.xHvFu2Js4W8rO1dmIrARDQHaHa?pid=ImgDet&w=200&h=200&c=7&dpr=1.3" alt="Club Logo">
+    </div>
+    <span class="icon-button" onclick="toggleNav()">&#9776;</span>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+        <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="about11.html"><i class="fa fa-fw fa-info-circle"></i> About</a>
+        <a href="achievement.html"><i class="fa fa-fw fa-trophy"></i> Achievements</a>
+        <a href="events.html"><i class="fa fa-fw fa-calendar"></i> Events</a>
+        <a href="#notification"><i class="fa fa-fw fa-bell"></i> Notification</a>
+        <a href="Studentchapter.html"><i class="fa fa-fw fa-graduation-cap"></i> Student Chapter</a>
+        <a href="facultychapter.html"><i class="fa fa-fw fa-graduation-cap"></i> Teacher Chapter</a>
+        <a href="gallery.html"><i class="fa fa-fw fa-image"></i> Gallery</a>
+        <a href="magazine.html"><i class="fa fa-fw fa-newspaper-o"></i> Magazine</a>
+        <a href="future.html"><i class="fa fa-fw fa-futbol-o"></i> Future of the Club</a>
+        <a href="signUpChoice.html"><i class="fa fa-fw fa-user"></i> Login</a>
+        <a href="help.html"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+        <a href="help.html"><i class="fa fa-fw fa-question-circle"></i> Help</a>
+    </div>
+
+    <div class="description">
+        <h2>Welcome to the Innovation Club!</h2>
+        <p>This is a place where creativity thrives and innovation is celebrated. Join us on a journey of exploration and discovery.</p>
+    </div>
+
+    <div class="notification-bar" id="notificationBar">
+        <p>New notification: Don't miss our upcoming event on <strong>February 15th</strong>!</p>
+    </div>
+
+    <script>
+        function toggleNav() {
+            var sidenav = document.getElementById("mySidenav");
+            var body = document.body;
+
+            if (sidenav.style.width === "250px") {
+                sidenav.style.width = "0";
+                body.classList.remove('dimmed');
+            } else {
+                sidenav.style.width = "250px";
+                body.classList.add('dimmed');
+            }
+        }
+
+        // Show the notification bar after a delay
+        setTimeout(function() {
+            document.getElementById("notificationBar").style.display = "block";
+        }, 1000); // Adjust the delay (in milliseconds) as needed
+    </script>
+
+</body>
+
+</html>

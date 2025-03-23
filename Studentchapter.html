@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students chapter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://assets-homepages-learning.3plearning.net/wp-content/uploads/2020/07/blog-12-effective-teaching-strategies-every-teacher-toolkit.png'); /* Replace 'background.jpg' with the path to your image */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .student-names {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    .student-names h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .student-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .student-list li {
+      margin-bottom: 10px;
+    }
+
+    .student-list li a {
+      display: block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .student-list li a:hover {
+      background-color: #2980b9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px 0 20px 220px; /* Adjust the left margin to create space for the student names list */
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7); /* Add transparency to the background color */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      position: relative;
+      z-index: 0;
+    }
+
+    .student-details {
+      padding-left: 20px;
+    }
+
+    .student-section {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .student-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .student-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .student-role {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .student-message {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .student-goals {
+      font-style: italic;
+      color: #888;
+    }
+
+    .student-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="student-names">
+    <h2>Students</h2>
+    <ul class="student-list">
+      <li><a href="#radha-patel">Radha Patel</a></li>
+      <li><a href="#arjun-sharma">Arjun Sharma</a></li>
+      <li><a href="#priya-gupta">Priya Gupta</a></li>
+      <li><a href="#aryan-singh">Aryan Singh</a></li>
+      <li><a href="#diya-verma">Diya Verma</a></li>
+      <li><a href="#rohan-desai">Rohan Desai</a></li>
+      <li><a href="#kavya-mishra">Kavya Mishra</a></li>
+    </ul>
+  </div>
+
+  <div class="student-details">
+    <div class="student-section" id="radha-patel">
+      <img src="https://c8.alamy.com/comp/2R8HCBG/young-man-in-glasses-portrait-of-a-student-full-face-abstract-male-avatar-in-flat-style-2R8HCBG.jpg" alt="Radha Patel" class="student-image">
+      <h3 class="student-name">Radha Patel</h3>
+      <div class="student-role">Club President</div>
+      <div class="student-message">
+        <p>Hello, I'm Radha. I enjoy learning new things and meeting new people.</p>
+      </div>
+      <div class="student-goals">
+        <p>My goal is to lead the Innovation Club and foster creativity among members.</p>
+      </div>
+    </div>
+
+    <div class="student-section" id="arjun-sharma">
+      <img src="https://media.istockphoto.com/id/1333016185/vector/an-asian-guy-is-smiling-a-young-businessman.jpg?s=612x612&w=is&k=20&c=ZgNXzqCZ8WjIpyhAJj9puVKUtTv4nDfEhS2WQWZ7MHM=" alt="Arjun Sharma" class="student-image">
+      <h3 class="student-name">Arjun Sharma</h3>
+      <div class="student-role">Vice President</div>
+      <div class="student-message">
+        <p>Hi, I'm Arjun. I have a passion for technology and enjoy coding.</p>
+      </div>
+      <div class="student-goals">
+        <p>My goal is to support the Club President and contribute innovative ideas to the club.</p>
+      </div>
+    </div>
+    
+    <!-- Add more sections for additional students -->
+    
+    <div class="student-section" id="priya-gupta">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgqJhoLgXYupnuHG6CRReWugRmiQx4Qk4tjpJzcX0ViVta52XrRRSUnC8KnE9Fgi_XfyE&usqp=CAU" alt="Harshith" class="student-image">
+      <h3 class="student-name">Priya Gupta</h3>
+      <div class="student-role">Event Coordinator</div>
+      <div class="student-message">
+        <p>Hi, I'm Priya. I love solving math problems and exploring mathematical concepts.</p>
+      </div>
+      <div class="student-goals">
+        <p>My goal is to organize engaging events for the club and ensure their success.</p>
+      </div>
+    </div>
+    
+    <div class="student-section" id="aryan-singh">
+      <img src="https://img.freepik.com/premium-vector/portrait-young-man-full-face_276162-177.jpg" alt="Aryan Singh" class="student-image">
+      <h3 class="student-name">Aryan Singh</h3>
+      <div class="student-role">Secretary</div>
+      <div class="student-message">
+        <p>Hello, I'm Aryan. I enjoy discussing current events and expressing my opinions.</p>
+      </div>
+      <div class="student-goals">
+        <p>My goal is to manage club communications and assist in organizing club activities.</p>
+      </div>
+    </div>
+    
+    <div class="student-section" id="diya-verma">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKh98bR_fk0mm3SXnLWvOwqk6mKNsso_vn_FXtgIgAlvC67eQ2gB4Oh2BcAZLmFpJlu28&usqp=CAU" alt="Diya Verma" class="student-image">
+      <h3 class="student-name">Dhananjaya Verma</h3>
+      <div class="student-role">Treasurer</div>
+      <div class="student-message">
+        <p>Hi, I'm Diya. I'm passionate about protecting the environment and promoting sustainability.</p>
+      </div>
+      <div class="student-goals">
+        <p>My goal is to manage the club's finances and ensure responsible use of resources.</p>
+      </div>
+    </div>
+    
+    <div class="student-section" id="rohan-desai">
+      <img src="https://media.istockphoto.com/id/1530705166/vector/young-man-with-curly-hair-portrait-abstract-guy-or-a-student-full-face-abstract-male-avatar.jpg?s=612x612&w=is&k=20&c=ngezDPtOeWz-FC7y56wnbBvcFy8wWwMSU0IKPLgle7s=" alt="Rohan Desai" class="student-image">
+      <h3 class="student-name">Rohan Desai</h3>
+      <div class="student-role">Member</div>
+      <div class="student-message">
+        <p>Hello, I'm Rohan. I'm fascinated by robotics and enjoy building and programming robots.</p>
+      </div>
+      <div class="student-goals">
+        <p>My goal is to contribute to the club's projects and learn from other members.</p>
+      </div>
+    </div>
+    
+    <div class="student-section" id="kavya-mishra">
+      <img src="https://media.istockphoto.com/id/1498912613/vector/young-man-portrait-full-face-abstract-male-avatar-in-flat-style.jpg?s=612x612&w=is&k=20&c=ZzvgIXgxCxf5zFjarMXGwYsmrd66DQMWS1WHs9fvV_E=" alt="Kavya Mishra" class="student-image">
+      <h3 class="student-name">Shashank Mishra</h3>
+      <div class="student-role">Member</div>
+      <div class="student-message">
+        <p>Hi, I'm Kavya. I enjoy expressing my creativity through art and design.</p>
+      </div>
+      <div class="student-goals">
+        <p>My goal is to contribute artistic ideas to the club's projects and collaborate with other members.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

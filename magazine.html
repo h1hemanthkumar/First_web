@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('galleryback.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 60px auto 20px; /* Adjust top margin for button */
+            padding: 0 10px; /* Added padding for better layout */
+        }
+
+        .post {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+
+        .post-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        .post-pdf {
+            width: 100%;
+            height: 600px; /* Adjust height as needed */
+            display: block;
+        }
+
+        .post-description {
+            padding: 10px;
+        }
+
+        .post-actions {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Larger icon size */
+        .post-actions span i {
+            font-size: 24px; /* Adjust as needed */
+            cursor: pointer; /* Add cursor pointer */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        /* Style for the fixed top button */
+        .fixed-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        /* Style for the post form */
+        #post-form {
+            display: none;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        #post-form input[type="text"],
+        #post-form input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        #post-form button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        #post-form button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for liked and disliked icons */
+        .liked i {
+            color: blue; /* Change color to blue for liked icon */
+        }
+
+        .disliked i {
+            color: red; /* Change color to red for disliked icon */
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed top button for posting new content -->
+    <div class="fixed-button">
+        <i class="fas fa-plus-circle" onclick="togglePostForm()" style="font-size: 70px; color: green; cursor: pointer;"></i>
+    </div>
+
+    <div class="container">
+        <!-- Post form, initially hidden -->
+        <div id="post-form">
+            <h3>Create a New Post</h3>
+            <input type="file" id="profile-pic" accept="image/*" style="display: none">
+            <button onclick="document.getElementById('profile-pic').click()">Upload Profile Picture</button><br><br>
+            <input type="text" id="profile-name" placeholder="Your Name"><br><br>
+            <input type="text" id="post-description" placeholder="Description"><br><br>
+            <input type="file" id="upload" accept="application/pdf" style="display: none">
+            <button onclick="document.getElementById('upload').click()">Upload PDF</button><br><br>
+            <button onclick="submitPost()">Submit</button>
+        </div>
+        <!-- Your existing posts -->
+        <!-- Member 1 -->
+        <div class="post">
+            <div class="post-header">
+                <img src="https://th.bing.com/th/id/OIP.Qc4cGSMZMfFrSB-Bgg_IuAHaHY?w=130&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Profile Picture">
+                <span class="username">ISTE Pesce</span>
+            </div>
+            <div class="post-pdf">
+                <object data="https://www.revapucollege.edu.in/downloads/ganganagar/REVA-PU-College-Pragya-Magazine-V3.pdf " type="application/pdf" width="100%" height="100%">
+                    <p>PDF cannot be displayed.</p>
+                </object>
+            </div>
+            <div class="post-description">
+                <p>The scariest moment is always just before you start.</p>
+            </div>
+            <div class="post-actions">
+                <span class="like-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-up"></i> <span class="like-count"></span>
+                </span>
+                <span class="dislike-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-down"></i> <span class="like-count"></span>
+                </span>
+                <span class="comment-btn">
+                    <i class="far fa-comment"></i>
+                </span>
+                <span class="share-btn">
+                    <i class="far fa-share-square"></i>
+                </span>
+                <span class="download-btn">
+                    <i class="far fa-arrow-alt-circle-down"></i>
+                </span>
+            </div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <img src="https://th.bing.com/th/id/OIP.E7pbmNDIcaiMZVLVm16wWgHaHa?w=174&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Profile Picture">
+                <span class="username">CSE Pesce</span>
+            </div>
+            <div class="post-pdf">
+                <object data="https://ramjas.du.ac.in/college/web/download/e-magazine-2020.pdf" type="application/pdf" width="100%" height="100%">
+                    <p>PDF cannot be displayed.</p>
+                </object>
+            </div>
+            <div class="post-description">
+                <p>Who looks outside, dreams; who looks inside, awakes.</p>
+            </div>
+            <div class="post-actions">
+                <span class="like-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-up"></i> <span class="like-count"></span>
+                </span>
+                <span class="dislike-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-down"></i> <span class="like-count"></span>
+                </span>
+                <span class="comment-btn">
+                    <i class="far fa-comment"></i>
+                </span>
+                <span class="share-btn">
+                    <i class="far fa-share-square"></i>
+                </span>
+                <span class="download-btn">
+                    <i class="far fa-arrow-alt-circle-down"></i>
+                </span>
+            </div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <img src="https://th.bing.com/th/id/OIP.FOPdKBKkSQWrNJct25euMQHaHa?w=151&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Profile Picture">
+                <span class="username">RAM</span>
+            </div>
+            <div class="post-pdf">
+                <object data="http://node01.chowgules.ac.in/pub/vidya%20magazine/Vidya%20Magazine%202020-21.pdf " type="application/pdf" width="100%" height="100%">
+                    <p>PDF cannot be displayed.</p>
+                </object>
+            </div>
+            <div class="post-description">
+                <p>Life is a daring adventure or it is nothing at all.</p>
+            </div>
+            <div class="post-actions">
+                <span class="like-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-up"></i> <span class="like-count"></span>
+                </span>
+                <span class="dislike-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-down"></i> <span class="like-count"></span>
+                </span>
+                <span class="comment-btn">
+                    <i class="far fa-comment"></i>
+                </span>
+                <span class="share-btn">
+                    <i class="far fa-share-square"></i>
+                </span>
+                <span class="download-btn">
+                    <i class="far fa-arrow-alt-circle-down"></i>
+                </span>
+            </div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <img src="https://th.bing.com/th/id/OIP.V6YHiN-Alyw-OM48lI-ncQHaDP?w=297&h=153&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Profile Picture">
+                <span class="username">karthik</span>
+            </div>
+            <div class="post-pdf">
+                <object data="https://www.srisaradacollege.org/assets/pdfs/Magazine%20(2020-2021).pdf" type="application/pdf" width="100%" height="100%">
+                    <p>PDF cannot be displayed.</p>
+                </object>
+            </div>
+            <div class="post-description">
+                <p>Wisdom is the reward you get for a lifetime of listening when you’d have preferred to talk.</p>
+            </div>
+            <div class="post-actions">
+                <span class="like-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-up"></i> <span class="like-count"></span>
+                </span>
+                <span class="dislike-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-down"></i> <span class="like-count"></span>
+                </span>
+                <span class="comment-btn">
+                    <i class="far fa-comment"></i>
+                </span>
+                <span class="share-btn">
+                    <i class="far fa-share-square"></i>
+                </span>
+                <span class="download-btn">
+                    <i class="far fa-arrow-alt-circle-down"></i>
+                </span>
+            </div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <img src="https://th.bing.com/th/id/OIP.-EFpkwZkb6qB9WxdndIxfQHaHa?w=182&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Profile Picture">
+                <span class="username">hemanth</span>
+            </div>
+            <div class="post-pdf">
+                <object data="https://teresas.ac.in/IQACcollegemagazine-2018.pdf" type="application/pdf" width="100%" height="100%">
+                    <p>PDF cannot be displayed.</p>
+                </object>
+            </div>
+            <div class="post-description">
+                <p>Every next level of your life will demand a different you.</p>
+            </div>
+            <div class="post-actions">
+                <span class="like-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-up"></i> <span class="like-count"></span>
+                </span>
+                <span class="dislike-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-down"></i> <span class="like-count"></span>
+                </span>
+                <span class="comment-btn">
+                    <i class="far fa-comment"></i>
+                </span>
+                <span class="share-btn">
+                    <i class="far fa-share-square"></i>
+                </span>
+                <span class="download-btn">
+                    <i class="far fa-arrow-alt-circle-down"></i>
+                </span>
+            </div>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <img src="https://th.bing.com/th/id/OIP.CVtjyZsfSeSo-OzHgvG9pwHaHa?w=213&h=213&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Profile Picture">
+                <span class="username">Prudvi Raju</span>
+            </div>
+            <div class="post-pdf">
+                <object data="https://gcoeara.ac.in/pdf/collegemagzine20.pdf" type="application/pdf" width="100%" height="100%">
+                    <p>PDF cannot be displayed.</p>
+                </object>
+            </div>
+            <div class="post-description">
+                <p>I have learned over the years that when one’s mind is made up, this diminishes fear</p>
+            </div>
+            <div class="post-actions">
+                <span class="like-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-up"></i> <span class="like-count"></span>
+                </span>
+                <span class="dislike-btn" onclick="toggleLike(this)">
+                    <i class="far fa-thumbs-down"></i> <span class="like-count"></span>
+                </span>
+                <span class="comment-btn">
+                    <i class="far fa-comment"></i>
+                </span>
+                <span class="share-btn">
+                    <i class="far fa-share-square"></i>
+                </span>
+                <span class="download-btn">
+                    <i class="far fa-arrow-alt-circle-down"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePostForm() {
+            var postForm = document.getElementById('post-form');
+            postForm.style.display = postForm.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function submitPost() {
+            var profilePicInput = document.getElementById('profile-pic');
+            var profilePic = profilePicInput.files[0];
+            var profileName = document.getElementById('profile-name').value;
+            var description = document.getElementById('post-description').value;
+            var fileInput = document.getElementById('upload');
+            var file = fileInput.files[0];
+
+            if (profileName && description && file) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var pdf = document.createElement('object');
+                    pdf.data = event.target.result;
+                    pdf.type = 'application/pdf';
+                    pdf.width = '100%';
+                    pdf.height = '100%';
+                    var postElement = createPostElement(profilePic, profileName, description, pdf);
+                    var container = document.querySelector('.container');
+                    container.insertBefore(postElement, container.firstChild);
+                }
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please fill in all fields and upload a PDF file.');
+            }
+        }
+
+        function createPostElement(profilePic, profileName, description, content) {
+            var post = document.createElement('div');
+            post.classList.add('post');
+
+            var postHeader = document.createElement('div');
+            postHeader.classList.add('post-header');
+
+            var profileImg = document.createElement('img');
+            if (profilePic) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    profileImg.src = event.target.result;
+                };
+                reader.readAsDataURL(profilePic);
+            } else {
+                profileImg.src = 'default-profile-pic.jpg'; // Provide a default profile picture
+            }
+            profileImg.alt = 'Profile Picture';
+
+            var username = document.createElement('span');
+            username.classList.add('username');
+            username.textContent = profileName;
+
+            postHeader.appendChild(profileImg);
+            postHeader.appendChild(username);
+
+            var postDescription = document.createElement('div');
+            postDescription.classList.add('post-description');
+            postDescription.textContent = description;
+
+            var postActions = document.createElement('div');
+            postActions.classList.add('post-actions');
+
+            post.appendChild(postHeader);
+            post.appendChild(content);
+            post.appendChild(postDescription);
+            post.appendChild(postActions);
+
+            return post;
+        }
+
+        function toggleLike(element) {
+            var likeIcon = element.querySelector('i');
+            var likeCount = element.querySelector('.like-count');
+
+            if (likeIcon.classList.contains('far')) {
+                likeIcon.classList.remove('far');
+                likeIcon.classList.add('fas');
+                likeIcon.parentElement.classList.add('liked');
+                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+            } else {
+                likeIcon.classList.remove('fas');
+                likeIcon.classList.add('far');
+                likeIcon.parentElement.classList.remove('liked');
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            }
+        }
+    </script>
+</body>
+</html>
